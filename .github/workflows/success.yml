@@ -25,3 +25,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - run: echo "Success Build ${{ inputs.version_id }} ${{ inputs.product }} ${{ inputs.name }} ${{ inputs.version }}"
+      
+      - name: Push Tag
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Release ${{ inputs.version }}'
+          tag: 'v${{ inputs.version }}'
+          tag_push: '--force'

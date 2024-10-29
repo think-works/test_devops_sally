@@ -30,8 +30,9 @@ jobs:
       - run: echo "Success Build ${{ inputs.version_id }} ${{ inputs.product }} ${{ inputs.name }} ${{ inputs.version }}"
       
       - name: Push Tag
-        uses: EndBug/add-and-commit@v9
+        uses: ncipollo/release-action@v1
         with:
-          message: 'Release ${{ inputs.version }}'
-          tag: 'v${{ inputs.version }}'
-          tag_push: '--force'
+          allowUpdates: true
+          commit: ${{ github.sha }}
+          tag: v${{ inputs.version }}
+          body: Release v${{ inputs.version }}

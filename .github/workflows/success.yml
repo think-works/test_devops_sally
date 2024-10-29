@@ -23,7 +23,10 @@ jobs:
     runs-on: [self-hosted, linux, x64, think]
     steps:
       - uses: actions/checkout@v3
-
+      
+      - name: Sleep for 10 seconds
+        run: sleep 10
+        
       - run: echo "Success Build ${{ inputs.version_id }} ${{ inputs.product }} ${{ inputs.name }} ${{ inputs.version }}"
       
       - name: Push Tag
